@@ -13,6 +13,7 @@ var session = require('express-session')
 var cookieParser = require('cookie-parser')
 // end phần hiển thị popup
 var methodOverride = require('method-override')
+const path = require('path');
 
 
 
@@ -33,6 +34,10 @@ app.use(flash());
 //end flash
 // override with POST having ?_method=DELETE
 app.use(methodOverride('_method'))
+//timyMCE
+app.use('/tinymce', express.static(path.join(__dirname, 'node_modules', 'tinymce')));
+//end timyMCE
+
 
 routeClient(app);
 routeAdmin(app);
