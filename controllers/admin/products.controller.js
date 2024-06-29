@@ -25,7 +25,7 @@ module.exports.index = async (req,res) => {
         find.status = req.query.status;
       }
     // end  trạng thái
-    const pagination = await paginationHelper(req , find);
+    
     // tìm kiếm
     var keyword = "" ;
     if (req.query.keyword){
@@ -37,7 +37,7 @@ module.exports.index = async (req,res) => {
 
 
     // Phân trang
-    
+    const pagination = await paginationHelper(req , find);
      // end Phân trang
     const products = await Product
         .find(find)
