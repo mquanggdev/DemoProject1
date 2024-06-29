@@ -222,3 +222,38 @@ if(uploadImage) {
   });
 }
 // end preview ảnh
+
+
+// Sort
+const sort = document.querySelector("[sort]");
+if(sort){
+    const url = new URL(window.location.href);
+    const sortOption = document.querySelector("[sort-select]");
+    sortOption.addEventListener("change",(e) => {
+        const value = e.target.value;
+        const [sortKey,sortValue] = value.split("-");
+        url.searchParams.set("sortKey",sortKey);
+        url.searchParams.set("sortValue",sortValue);
+
+        window.location.href = url.href
+    })
+
+    const sortKey = url.searchParams.get("sortKey");
+    const sortValue = url.searchParams.get("sortValue");
+
+   if(sortKey && sortValue){
+       const stringOpt = `${sortKey}-${sortValue}` ;
+       const optionSelected = sortOption.querySelector(`option[value='${stringOpt}']`);
+       optionSelected.selected = true;
+   }
+
+   const sortClear = document.querySelector("[sort-clear]");
+    sortClear.addEventListener("click",() => {
+    url.searchParams.delete("sortKey");
+    url.searchParams.delete("sortValue");
+    window.location.href = url.href
+})
+}
+
+
+// end Sort
