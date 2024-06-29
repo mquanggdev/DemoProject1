@@ -248,11 +248,11 @@ if(sort){
    }
 
    const sortClear = document.querySelector("[sort-clear]");
-    sortClear.addEventListener("click",() => {
-    url.searchParams.delete("sortKey");
-    url.searchParams.delete("sortValue");
-    window.location.href = url.href
-})
+        sortClear.addEventListener("click",() => {
+        url.searchParams.delete("sortKey");
+        url.searchParams.delete("sortValue");
+        window.location.href = url.href;
+    })
 }
 
 
